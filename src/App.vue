@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { mande } from 'mande' // <-- "Error" of declaration here
+
+const user = mande('/api/user')
+
+async function getUser() {
+  return await user.get()
+}
 </script>
 
 <template>
@@ -18,6 +25,8 @@ import HelloWorld from './components/HelloWorld.vue'
   </header>
 
   <RouterView />
+
+  <button @click="getUser">GET USER</button>
 </template>
 
 <style scoped>
